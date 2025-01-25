@@ -1,0 +1,10 @@
+correct_sources: yes
+disable_enterprise_repo: yes
+enable_no_subscription_repo: yes
+correct_ceph_sources: yes
+add_pvetest_repo: yes
+disable_subscription_nag: yes
+enable_ha: yes
+disable_ha: no
+update_proxmox: yes
+reboot_proxmox: yes

@@ -1,0 +1,21 @@
+    - name: Enable kernel modules for PCI passthrough
+      lineinfile:
+        path: /etc/modules
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - vfio
+        - vfio_iommu_type1
+        - vfio_pci
+        - vfio_virqfd
+
+    - name: Add kernel parameters for IOMMU
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"'
+      notify: update grub 
+
+  handlers:
+    - name: update grub
+      command: update-grub

@@ -1,0 +1,8 @@
+---
+- name: Apply Proxmox Post-Installation Setup
+  hosts: pve.flopo.retropetro.net
+  become: true
+  vars_files:
+    - vars/proxmox_post_install_vars.yml
+  roles:
+    - proxmox_post_install
